@@ -1,0 +1,36 @@
+# fetch latest refs
+git fetch origin
+
+# create the branch (if it already exists locally this will switch to it)
+git checkout -b feature/add-case-study-market-ai || git checkout feature/add-case-study-market-ai
+
+# create folder if needed
+mkdir -p case-studies
+
+# write files (example uses here-doc; run from repo root)
+cat > "case-studies/Case Study - Slides.md" <<'EOF'
+# Case Study — Market-AI in Recruitment Workflows (Slide Deck)
+
+---
+# Title
+Case Study — Market-AI in Recruitment Workflows
+A curated product case study on applying market-AI to sourcing, screening, and market intelligence for hiring
+
+... (paste full slides content from above) ...
+EOF
+
+cat > "case-studies/Case Study - Blog.md" <<'EOF'
+Title: How Market-AI Can Transform Recruitment Workflows — A Product Case Study
+
+Intro
+Hiring remains one of the most critical — and time-consuming — activities at fast-growing companies. Recruiters sift through noisy channels, hiring managers receive inconsistent shortlists, and teams lack real-time market signals like compensation and candidate availability. This case study explores how a "Market-AI" — an AI product that combines candidate discovery, explainable screening, and market intelligence — can change recruitment workflows to speed hiring and improve match quality.
+
+... (paste full blog content from above) ...
+EOF
+
+# stage and commit
+git add "case-studies/Case Study - Slides.md" "case-studies/Case Study - Blog.md"
+git commit -m "Add Case Study — Market-AI in recruitment workflows"
+
+# push branch to origin
+git push -u origin feature/add-case-study-market-ai
